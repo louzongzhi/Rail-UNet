@@ -1,21 +1,14 @@
-import os.path
+import os
+import math
 import warnings
-
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from functools import partial
-
 from timm.models.layers import DropPath, to_2tuple, trunc_normal_
 from timm.models.registry import register_model
 from timm.models.vision_transformer import _cfg
 from timm.models.registry import register_model
-
-import math
 
 
 class Mlp(nn.Module):
@@ -546,12 +539,12 @@ class UNetV2(nn.Module):
     """
     use SpatialAtt + ChannelAtt
     """
-    def __init__(self, channel=32, deep_supervision=True, pretrained_path=None, n_channels=3, n_classes=9, bilinear=False):
+    def __init__(self, channel=32, n_channels=3, n_classes=9, bilinear=False, deep_supervision=True, pretrained_path=None):
         super().__init__()
-        self.deep_supervision = deep_supervision
         self.n_channels = n_channels
         self.n_classes = n_classes
         self.bilinear = bilinear
+        self.deep_supervision = deep_supervision
 
         self.encoder = Encoder(pretrained_path)
 
