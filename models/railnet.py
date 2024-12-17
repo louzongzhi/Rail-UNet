@@ -1,11 +1,8 @@
-import sys
-import pdb
 import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torchvision
-from turtle import forward
 
 class conv_bn_relu(nn.Module):
     def __init__(self, in_channels, out_channels, upsample=0):
